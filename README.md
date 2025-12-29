@@ -49,16 +49,17 @@ The boot process is split into independent stages to demonstrate how early syste
 
 
 🛠 Build & Run
-nasm -f bin boot.asm -o boot.bin
 
-nasm -f bin stage2.asm -o stage2.bin
-
-dd if=/dev/zero of=os.img bs=512 count=2880
-
-dd if=boot.bin  of=os.img conv=notrunc
-
-dd if=stage2.bin of=os.img bs=512 seek=1 conv=notrunc
-
-dd if=stag32.bin of=os.img bs=512 seek=2 conv=notrunc
-
-qemu-system-i386 -drive format=raw,file=os.img
+          nasm -f bin boot.asm -o boot.bin
+          
+          nasm -f bin stage2.asm -o stage2.bin
+          
+          dd if=/dev/zero of=os.img bs=512 count=2880
+          
+          dd if=boot.bin  of=os.img conv=notrunc
+          
+          dd if=stage2.bin of=os.img bs=512 seek=1 conv=notrunc
+          
+          dd if=stag32.bin of=os.img bs=512 seek=2 conv=notrunc
+          
+          qemu-system-i386 -fda os.img
