@@ -63,7 +63,6 @@ The boot process is split into independent stages to demonstrate how early syste
           dd if=stag32.bin of=os.img bs=512 seek=2 conv=notrunc
           
           qemu-system-i386 -fda os.img
-
 **Day 7**-E820 Memory Map
 
 stage2.asm: This contains Stage 2 of a custom x86 bootloader written in 16-bit assembly. It prints a message and reads the BIOS memory map (E820) to identify usable and reserved memory.
