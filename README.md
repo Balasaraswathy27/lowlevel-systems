@@ -63,3 +63,37 @@ The boot process is split into independent stages to demonstrate how early syste
           dd if=stag32.bin of=os.img bs=512 seek=2 conv=notrunc
           
           qemu-system-i386 -fda os.img
+
+**Day 7**-E820 Memory Map
+
+stage2.asm: This contains Stage 2 of a custom x86 bootloader written in 16-bit assembly. It prints a message and reads the BIOS memory map (E820) to identify usable and reserved memory.
+
+
+          Prints "NOW IN SECOND" to the screen.
+          
+          Calls BIOS E820 to read memory descriptors.
+          
+          Loops through all entries and prints their type:
+
+                    1 → Usable RAM
+                    
+                    2 → Reserved
+
+**How to Run?**
+
+Assemble with NASM:
+
+          nasm -f bin stage2.asm -o stage2.bin
+
+
+Test in QEMU:
+
+          qemu-system-i386 -fda stage2.bin
+
+**Notes:**
+
+          Only type 1 memory is safe to use.
+          
+          EBX is preserved across calls; do not reset it.
+          
+          The buffer currently holds one descriptor; storing all entries is planned next.
