@@ -83,11 +83,13 @@ stage2.asm: This contains Stage 2 of a custom x86 bootloader written in 16-bit a
 Assemble with NASM:
 
           nasm -f bin stage2.asm -o stage2.bin
+          nasm -f bin boot.asm -o boot.bin
+
 
 
 Test in QEMU:
 
-          qemu-system-i386 -fda stage2.bin
+          qemu-system-i386 -fda os.img
 
 **Notes:**
 
