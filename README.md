@@ -12,7 +12,6 @@ The goal is to learn firmware, bootloaders, and operating system fundamentals fr
 
 
 
-**DAY 6:**
 **🧠 Multi-Stage x86 Bootloader (16-bit Real Mode)**
 
 This project implements a multi-stage x86 bootloader written entirely in 16-bit assembly, designed to run in BIOS real mode and tested using QEMU.
@@ -63,7 +62,7 @@ The boot process is split into independent stages to demonstrate how early syste
           dd if=stag32.bin of=os.img bs=512 seek=2 conv=notrunc
           
           qemu-system-i386 -fda os.img
-**Day 7**-E820 Memory Map
+**E820 Memory Map**
 
 stage2.asm: This contains Stage 2 of a custom x86 bootloader written in 16-bit assembly. It prints a message and reads the BIOS memory map (E820) to identify usable and reserved memory.
 
